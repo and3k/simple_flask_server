@@ -34,7 +34,7 @@ def get_old_students():
     for student in students:
         if student['age'] > 20:
             old_students.append(student)  
-    return old_students 
+    return jsonify(old_students) 
 
 @app.route('/students/young_students/', methods=['GET'])
 def get_young_students():
@@ -42,7 +42,7 @@ def get_young_students():
     for student in students:
         if student['age'] < 21:
             young_students.append(student)
-    return young_students 
+    return jsonify(young_students)
 
 @app.route('/students/advance_students/', methods=['GET'])
 def get_advance_students():
@@ -50,7 +50,7 @@ def get_advance_students():
     for student in students:
         if student['age'] < 21 and student['grade'] == 'A':
             advance_students.append(student)
-    return advance_students 
+    return jsonify(advance_students) 
 
 
 @app.route('/students/student_names/', methods=['GET'])
@@ -58,14 +58,14 @@ def get_student_names():
     student_names = []
     for student in students:
         student_names.append(f"first_name: {student['first_name']} , last_name: {student['last_name']}")
-    return student_names
+    return jsonify(student_names)
 
 @app.route('/students/student_ages/', methods=['GET'])
 def get_student_ages():
     student_ages = []
     for student in students:
-        student_ages.append(f"first_name: {student['first_name']} {student['last_name']} {student['age']}")
-    return student_ages
+        student_ages.append(f"first_name: {student['first_name']}, last_name: {student['last_name']} , age:{student['age']}")
+    return jsonify(student_ages)
 
 # We define a route `/students` that responds to GET requests.
 # @app.route('/students', methods=['GET'])
